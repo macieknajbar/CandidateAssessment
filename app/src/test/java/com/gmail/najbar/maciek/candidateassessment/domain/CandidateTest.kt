@@ -2,6 +2,7 @@ package com.gmail.najbar.maciek.candidateassessment.domain
 
 import com.gmail.najbar.maciek.candidateassessment.domain.exceptions.IncorrectPhoneNumberException
 import com.gmail.najbar.maciek.candidateassessment.domain.exceptions.NotFullNameException
+import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Assert.fail
 import org.junit.Test
@@ -42,5 +43,12 @@ class CandidateTest {
         candidate.addContactNumber(contactNumber)
 
         assertTrue(candidate.contactNumbers.contains(contactNumber))
+    }
+
+    @Test fun `equals same`() {
+        val candidate1 = CandidateFactory.from("Maciej Najbar", "+48123123123")
+        val candidate2 = CandidateFactory.from("Maciej Najbar", "+48123123123")
+
+        assertEquals(candidate1, candidate2)
     }
 }
