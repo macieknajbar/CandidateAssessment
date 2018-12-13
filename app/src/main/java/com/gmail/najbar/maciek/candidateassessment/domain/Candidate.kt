@@ -10,4 +10,8 @@ class Candidate(val fullName: String, val phoneNumber: String) {
 
         (contactNumbers as MutableCollection).add(phoneNumber)
     }
+
+    fun addContactNumber(contactNumber: String) {
+
+    }
 }

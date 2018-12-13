@@ -32,4 +32,14 @@ class CandidateTest {
 
         assertTrue(candidate.contactNumbers.contains(phoneNumber))
     }
+
+    @Test fun `adds additional numbers to contact list`() {
+        val phoneNumber = "123456789"
+        val contactNumber = "123123123"
+        val candidate = Candidate("Maciej Najbar", phoneNumber)
+
+        candidate.addContactNumber(contactNumber)
+
+        assertTrue(candidate.contactNumbers.contains(contactNumber))
+    }
 }
