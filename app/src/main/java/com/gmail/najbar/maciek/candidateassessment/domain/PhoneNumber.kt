@@ -4,7 +4,7 @@ import com.gmail.najbar.maciek.candidateassessment.domain.exceptions.IncorrectPh
 
 class PhoneNumber(val phoneNumber: String) {
     init {
-        if (phoneNumber.matches(Regex("\\+\\d{9}")).not())
+        if (phoneNumber.matches(Regex("^\\+\\d{11}\$")).not())
             throw IncorrectPhoneNumberException()
     }
 }
