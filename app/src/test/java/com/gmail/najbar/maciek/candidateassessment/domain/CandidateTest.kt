@@ -10,7 +10,7 @@ class CandidateTest {
 
     @Test fun `requires full name`() {
         try {
-            Candidate("Maciej", "")
+            Candidate("Maciej", PhoneNumber("+48123456789"))
         } catch (ignored: NotFullNameException) {
             return
         }
@@ -20,7 +20,7 @@ class CandidateTest {
 
     @Test fun `requires phone number`() {
         try {
-            Candidate("Maciej Najbar", "")
+            Candidate("Maciej Najbar", PhoneNumber(""))
         } catch (ignored: IncorrectPhoneNumberException) {
             return
         }
@@ -29,30 +29,19 @@ class CandidateTest {
     }
 
     @Test fun `adds phone number to contact numbers list`() {
-        val phoneNumber = "123456789"
+        val phoneNumber = PhoneNumber("+48123456789")
         val candidate = Candidate("Maciej Najbar", phoneNumber)
 
         assertTrue(candidate.contactNumbers.contains(phoneNumber))
     }
 
     @Test fun `adds additional numbers to contact list`() {
-        val phoneNumber = "123456789"
-        val contactNumber = "123123123"
+        val phoneNumber = PhoneNumber("+48123456789")
+        val contactNumber = PhoneNumber("+48123123123")
         val candidate = Candidate("Maciej Najbar", phoneNumber)
 
         candidate.addContactNumber(contactNumber)
 
         assertTrue(candidate.contactNumbers.contains(contactNumber))
-    }
-
-    @Test fun `confirms any added phone number is correct`() {
-        try {
-            Candidate("Maciej Najbar", "123456789")
-                    .addContactNumber("12312")
-        } catch (ignored: IncorrectPhoneNumberException) {
-            return
-        }
-
-        fail("Should throw IncorrectPhoneNumberException")
     }
 }
