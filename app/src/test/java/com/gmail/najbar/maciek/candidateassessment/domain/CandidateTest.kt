@@ -10,7 +10,7 @@ class CandidateTest {
 
     @Test fun `requires full name`() {
         try {
-            Candidate("Maciej", PhoneNumber("+48123456789"))
+            CandidateFactory.from("Maciej", "+48123456789")
         } catch (ignored: NotFullNameException) {
             return
         }
@@ -20,7 +20,7 @@ class CandidateTest {
 
     @Test fun `requires phone number`() {
         try {
-            Candidate("Maciej Najbar", PhoneNumber(""))
+            CandidateFactory.from("Maciej Najbar", "")
         } catch (ignored: IncorrectPhoneNumberException) {
             return
         }
@@ -29,16 +29,15 @@ class CandidateTest {
     }
 
     @Test fun `adds phone number to contact numbers list`() {
-        val phoneNumber = PhoneNumber("+48123456789")
-        val candidate = Candidate("Maciej Najbar", phoneNumber)
+        val phoneNumber = "+48123456789"
+        val candidate = CandidateFactory.from("Maciej Najbar", phoneNumber)
 
-        assertTrue(candidate.contactNumbers.contains(phoneNumber))
+        assertTrue(candidate.contactNumbers.contains(PhoneNumber(phoneNumber)))
     }
 
     @Test fun `adds additional numbers to contact list`() {
-        val phoneNumber = PhoneNumber("+48123456789")
+        val candidate = CandidateFactory.from("Maciej Najbar", "+48123456789")
         val contactNumber = PhoneNumber("+48123123123")
-        val candidate = Candidate("Maciej Najbar", phoneNumber)
 
         candidate.addContactNumber(contactNumber)
 

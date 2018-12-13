@@ -7,4 +7,18 @@ class PhoneNumber(val phoneNumber: String) {
         if (phoneNumber.matches(Regex("^\\+\\d{11}\$")).not())
             throw IncorrectPhoneNumberException()
     }
+
+    override fun hashCode(): Int {
+        return phoneNumber.hashCode()
+    }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) {
+            return true
+        }
+        if (other is PhoneNumber) {
+            return phoneNumber == other.phoneNumber
+        }
+        return false
+    }
 }
