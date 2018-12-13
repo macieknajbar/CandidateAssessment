@@ -12,6 +12,9 @@ class Candidate(val fullName: String, val phoneNumber: String) {
     }
 
     fun addContactNumber(contactNumber: String) {
+        if (contactNumber.matches(Regex("\\d{9}")).not())
+            throw IncorrectPhoneNumberException()
+
         (contactNumbers as MutableCollection).add(contactNumber)
     }
 }
