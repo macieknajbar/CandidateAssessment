@@ -8,7 +8,7 @@ class PhoneNumberTest {
 
     @Test fun `confirms correct number number`() {
         try {
-            PhoneNumber("")
+            PhoneNumber("123456789")
         } catch (ignored: IncorrectPhoneNumberException) {
             return
         }
