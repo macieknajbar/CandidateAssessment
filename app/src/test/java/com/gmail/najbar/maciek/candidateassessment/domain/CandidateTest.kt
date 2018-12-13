@@ -7,11 +7,21 @@ class CandidateTest {
 
     @Test fun `requires full name`() {
         try {
-            Candidate("Maciej")
+            Candidate("Maciej", "")
         } catch (ignored: NotFullNameException) {
             return
         }
 
         fail("Should throw NotFullNameException!")
+    }
+
+    @Test fun `requires phone number`() {
+        try {
+            Candidate("Maciej Najbar", "")
+        } catch (ignored: PhoneNumberMissingException) {
+            return
+        }
+
+        fail("Should throw PhoneNumberMissingException")
     }
 }
