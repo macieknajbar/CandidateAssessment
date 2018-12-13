@@ -12,6 +12,6 @@ class Candidate(val fullName: String, val phoneNumber: String) {
     }
 
     fun addContactNumber(contactNumber: String) {
-
+        (contactNumbers as MutableCollection).add(contactNumber)
     }
 }
