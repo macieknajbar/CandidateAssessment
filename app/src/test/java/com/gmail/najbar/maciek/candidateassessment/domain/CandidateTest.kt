@@ -19,7 +19,7 @@ class CandidateTest {
     @Test fun `requires phone number`() {
         try {
             Candidate("Maciej Najbar", "")
-        } catch (ignored: PhoneNumberMissingException) {
+        } catch (ignored: IncorrectPhoneNumberException) {
             return
         }
 
@@ -41,5 +41,16 @@ class CandidateTest {
         candidate.addContactNumber(contactNumber)
 
         assertTrue(candidate.contactNumbers.contains(contactNumber))
+    }
+
+    @Test fun `confirms any added phone number is correct`() {
+        try {
+            Candidate("Maciej Najbar", "123456789")
+                    .addContactNumber("12312")
+        } catch (ignored: IncorrectPhoneNumberException) {
+            return
+        }
+
+        fail("Should throw IncorrectPhoneNumberException")
     }
 }
