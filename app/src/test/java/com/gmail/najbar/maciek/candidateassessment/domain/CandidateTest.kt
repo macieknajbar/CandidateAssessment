@@ -1,5 +1,7 @@
 package com.gmail.najbar.maciek.candidateassessment.domain
 
+import com.gmail.najbar.maciek.candidateassessment.domain.exceptions.IncorrectPhoneNumberException
+import com.gmail.najbar.maciek.candidateassessment.domain.exceptions.NotFullNameException
 import org.junit.Assert.assertTrue
 import org.junit.Assert.fail
 import org.junit.Test

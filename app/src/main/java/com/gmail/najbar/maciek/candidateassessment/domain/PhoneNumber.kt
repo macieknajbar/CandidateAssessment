@@ -1,3 +1,3 @@
 package com.gmail.najbar.maciek.candidateassessment.domain
 
-class IncorrectPhoneNumberException : RuntimeException()
+class PhoneNumber(val phoneNumber: String)
