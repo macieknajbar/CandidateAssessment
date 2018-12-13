@@ -1,5 +1,6 @@
 package com.gmail.najbar.maciek.candidateassessment.domain
 
+import org.junit.Assert.assertTrue
 import org.junit.Assert.fail
 import org.junit.Test
 
@@ -23,5 +24,12 @@ class CandidateTest {
         }
 
         fail("Should throw PhoneNumberMissingException")
+    }
+
+    @Test fun `adds phone number to contact numbers list`() {
+        val phoneNumber = "123456789"
+        val candidate = Candidate("Maciej Najbar", phoneNumber)
+
+        assertTrue(candidate.contactNumbers.contains(phoneNumber))
     }
 }
