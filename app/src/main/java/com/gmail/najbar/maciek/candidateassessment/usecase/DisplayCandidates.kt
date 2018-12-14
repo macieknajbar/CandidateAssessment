@@ -7,4 +7,8 @@ class DisplayCandidates(
     override fun all() {
         presenter.present(repository.findByName(""))
     }
+
+    override fun withName(name: String) {
+        presenter.present(repository.findByName(name))
+    }
 }

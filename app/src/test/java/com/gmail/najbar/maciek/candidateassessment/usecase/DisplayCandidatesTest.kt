@@ -9,7 +9,7 @@ import org.junit.Test
 
 class DisplayCandidatesTest {
 
-    @Test fun `displays all candidates displayed from repository`() {
+    @Test fun `displays all candidates from repository`() {
         val memoryCandidateDatabase = MemoryCandidatesDatabase()
         val listOfAllCandidates = listOf(
                 CandidateFactory.from("Chandler Bing", "+48123456789"),
@@ -25,5 +25,26 @@ class DisplayCandidatesTest {
 
         DisplayCandidates(presenter, MemoryRepositoryOfDisplayCandidates(memoryCandidateDatabase))
                 .all()
+    }
+
+    @Test fun `displays filtered candidates  by name`() {
+        val memoryCandidateDatabase = MemoryCandidatesDatabase()
+        val listOfAllCandidates = listOf(
+                CandidateFactory.from("Monica Geller", "+48123456789"),
+                CandidateFactory.from("Monica Bing", "+48123123123"),
+                CandidateFactory.from("Rachel Green", "+48111111111"))
+        listOfAllCandidates.forEach { memoryCandidateDatabase.update(it.fullName, it.contactNumbers.elementAt(0).phoneNumber) }
+
+        val presenter = object : Candidates.DisplayCandidates.Presenter {
+            override fun present(candidates: Collection<Candidate>) {
+                val expected = listOf(
+                        CandidateFactory.from("Monica Geller", "+48123456789"),
+                        CandidateFactory.from("Monica Bing", "+48123123123"))
+                assertEquals(expected, candidates)
+            }
+        }
+
+        DisplayCandidates(presenter, MemoryRepositoryOfDisplayCandidates(memoryCandidateDatabase))
+                .withName("Monica")
     }
 }

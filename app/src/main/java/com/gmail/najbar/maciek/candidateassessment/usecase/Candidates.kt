@@ -18,10 +18,22 @@ interface Candidates {
         fun all()
 
         /**
+         * Displays candidates filtered by name.
+         *
+         * @param   name Part of the name.
+         */
+        fun withName(name: String)
+
+        /**
          * Presents results.
          */
         interface Presenter {
 
+            /**
+             * Presents collection of candidates.
+             *
+             * @param   candidates Collection of candidates.
+             */
             fun present(candidates: Collection<Candidate>)
         }
 
@@ -32,6 +44,10 @@ interface Candidates {
 
             /**
              * Finds by full name.
+             *
+             * @param   name Searching phrase.
+             *
+             * @return Filtered collection of candidates.
              */
             fun findByName(name: String) : Collection<Candidate>
         }
