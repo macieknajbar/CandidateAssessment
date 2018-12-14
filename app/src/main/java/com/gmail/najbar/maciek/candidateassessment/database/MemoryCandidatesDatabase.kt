@@ -2,7 +2,7 @@ package com.gmail.najbar.maciek.candidateassessment.database
 
 import java.util.UUID
 
-object MemoryCandidatesDatabase {
+class MemoryCandidatesDatabase {
     private val candidateTable = mutableMapOf<String, String>()
     private val phoneNumberTable = mutableMapOf<String, List<String>>()
 

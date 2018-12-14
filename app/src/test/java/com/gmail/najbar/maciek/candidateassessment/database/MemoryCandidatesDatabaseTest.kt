@@ -5,14 +5,25 @@ import org.junit.Test
 
 class MemoryCandidatesDatabaseTest {
 
+    private val memoryCandidateDatabase = MemoryCandidatesDatabase()
+
     @Test fun `gets all candidates`() {
         val chandlerBing = MemoryCandidatesDatabase.DbCandidate("Chandler Bing", listOf("+48123123123", "+48321321321"))
         val rossGeller = MemoryCandidatesDatabase.DbCandidate("Ross Geller", listOf("+48123456789"))
-        MemoryCandidatesDatabase
+        memoryCandidateDatabase
                 .update(chandlerBing.name, chandlerBing.phoneNumbers[0], chandlerBing.phoneNumbers[1])
-        MemoryCandidatesDatabase
+        memoryCandidateDatabase
                 .update(rossGeller.name, rossGeller.phoneNumbers[0])
 
-        assertEquals(listOf(chandlerBing, rossGeller), MemoryCandidatesDatabase.getAll())
+        assertEquals(listOf(chandlerBing, rossGeller), memoryCandidateDatabase.getAll())
+    }
+
+    @Test fun `updates candidate that is already saved`() {
+        val joeyTribbiani = MemoryCandidatesDatabase.DbCandidate("Joey Tribbiani", listOf("+48111111111"))
+        memoryCandidateDatabase.update(joeyTribbiani.name, joeyTribbiani.phoneNumbers[0])
+
+        val updatedJoey = MemoryCandidatesDatabase.DbCandidate("Joey Tribbiani", listOf("+48222222222"))
+
+        assertEquals(listOf(updatedJoey), memoryCandidateDatabase.getAll())
     }
 }
