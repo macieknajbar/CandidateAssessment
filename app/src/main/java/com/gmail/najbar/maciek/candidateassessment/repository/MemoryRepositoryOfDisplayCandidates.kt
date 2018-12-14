@@ -17,5 +17,6 @@ class MemoryRepositoryOfDisplayCandidates(
                                 phoneNumber -> listOf(PhoneNumber(phoneNumber))
                             }))
                 }
+                .filter { it.fullName.contains(name) }
     }
 }
