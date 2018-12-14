@@ -5,6 +5,6 @@ class DisplayCandidates(
         private val repository: Candidates.DisplayCandidates.Repository) : Candidates.DisplayCandidates {
 
     override fun all() {
-        presenter.present(listOf())
+        presenter.present(repository.findByName(""))
     }
 }

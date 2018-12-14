@@ -5,14 +5,11 @@ import com.gmail.najbar.maciek.candidateassessment.domain.Candidate
 import com.gmail.najbar.maciek.candidateassessment.domain.PhoneNumber
 import com.gmail.najbar.maciek.candidateassessment.usecase.Candidates
 
-class MemoryRepositoryOfDisplayCandidates : Candidates.DisplayCandidates.Repository {
-
-    companion object {
-        val db = MemoryCandidatesDatabase()
-    }
+class MemoryRepositoryOfDisplayCandidates(
+        private val database: MemoryCandidatesDatabase) : Candidates.DisplayCandidates.Repository {
 
     override fun findByName(name: String): Collection<Candidate> {
-        val dbCandidates = db.getAll()
+        val dbCandidates = database.getAll()
         return dbCandidates
                 .flatMap {
                     listOf(Candidate(it.name, it.phoneNumbers
