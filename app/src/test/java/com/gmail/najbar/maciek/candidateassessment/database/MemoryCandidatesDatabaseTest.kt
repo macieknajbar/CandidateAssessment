@@ -22,7 +22,8 @@ class MemoryCandidatesDatabaseTest {
         val joeyTribbiani = MemoryCandidatesDatabase.DbCandidate("Joey Tribbiani", listOf("+48111111111"))
         memoryCandidateDatabase.update(joeyTribbiani.name, joeyTribbiani.phoneNumbers[0])
 
-        val updatedJoey = MemoryCandidatesDatabase.DbCandidate("Joey Tribbiani", listOf("+48222222222"))
+        val updatedJoey = MemoryCandidatesDatabase.DbCandidate(joeyTribbiani.name, listOf("+48222222222"))
+        memoryCandidateDatabase.update(updatedJoey.name, updatedJoey.phoneNumbers[0])
 
         assertEquals(listOf(updatedJoey), memoryCandidateDatabase.getAll())
     }

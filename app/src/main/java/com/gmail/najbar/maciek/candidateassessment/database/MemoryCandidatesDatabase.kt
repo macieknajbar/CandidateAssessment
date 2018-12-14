@@ -15,7 +15,11 @@ class MemoryCandidatesDatabase {
     }
 
     fun update(name: String, vararg phoneNumbers: String) {
-        val id = UUID.randomUUID().toString()
+        val candidate = candidateTable.filter { it.value == name }
+        val id = when (candidate.isEmpty()) {
+            true -> UUID.randomUUID().toString()
+            false -> candidate.keys.first()
+        }
         candidateTable[id] = name
         phoneNumberTable[id] = phoneNumbers.toList()
     }
