@@ -2,7 +2,7 @@ package com.gmail.najbar.maciek.candidateassessment.usecase
 
 import com.gmail.najbar.maciek.candidateassessment.domain.Candidate
 import com.gmail.najbar.maciek.candidateassessment.domain.CandidateFactory
-import com.gmail.najbar.maciek.candidateassessment.repository.DisplayCandidatesRepository
+import com.gmail.najbar.maciek.candidateassessment.repository.MemoryRepositoryOfDisplayCandidates
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -20,7 +20,7 @@ class DisplayCandidatesTest {
             }
         }
 
-        DisplayCandidates(presenter, DisplayCandidatesRepository())
+        DisplayCandidates(presenter, MemoryRepositoryOfDisplayCandidates())
                 .all()
     }
 }
