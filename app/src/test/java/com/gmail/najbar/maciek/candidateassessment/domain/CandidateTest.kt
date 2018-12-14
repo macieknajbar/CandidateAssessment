@@ -11,7 +11,7 @@ class CandidateTest {
 
     @Test fun `requires full name`() {
         try {
-            CandidateFactory.from("Maciej", "+48123456789")
+            CandidateFactory.from("1", "Maciej", "+48123456789")
         } catch (ignored: NotFullNameException) {
             return
         }
@@ -21,7 +21,7 @@ class CandidateTest {
 
     @Test fun `requires phone number`() {
         try {
-            CandidateFactory.from("Maciej Najbar", "")
+            CandidateFactory.from("1", "Maciej Najbar", "")
         } catch (ignored: IncorrectPhoneNumberException) {
             return
         }
@@ -31,14 +31,14 @@ class CandidateTest {
 
     @Test fun `adds phone number to contact numbers list`() {
         val phoneNumber = "+48123456789"
-        val candidate = CandidateFactory.from("Maciej Najbar", phoneNumber)
+        val candidate = CandidateFactory.from("1", "Maciej Najbar", phoneNumber)
 
-        assertTrue(candidate.contactNumbers.contains(PhoneNumber(phoneNumber)))
+        assertTrue(candidate.contactNumbers.contains(PhoneNumberEntity(phoneNumber)))
     }
 
     @Test fun `adds additional numbers to contact list`() {
-        val candidate = CandidateFactory.from("Maciej Najbar", "+48123456789")
-        val contactNumber = PhoneNumber("+48123123123")
+        val candidate = CandidateFactory.from("1", "Maciej Najbar", "+48123456789")
+        val contactNumber = PhoneNumberEntity("+48123123123")
 
         candidate.addContactNumber(contactNumber)
 
@@ -46,8 +46,8 @@ class CandidateTest {
     }
 
     @Test fun `equals same`() {
-        val candidate1 = CandidateFactory.from("Maciej Najbar", "+48123123123")
-        val candidate2 = CandidateFactory.from("Maciej Najbar", "+48123123123")
+        val candidate1 = CandidateFactory.from("1", "Maciej Najbar", "+48123123123")
+        val candidate2 = CandidateFactory.from("1", "Maciej Najbar", "+48123123123")
 
         assertEquals(candidate1, candidate2)
     }

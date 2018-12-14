@@ -10,13 +10,13 @@ import org.junit.Test
 
 class PhoneNumberTest {
 
-    private val phone1 = PhoneNumber("+48123456789")
-    private val phone2 = PhoneNumber("+48123456789")
-    private val phone3 = PhoneNumber("+48123123123")
+    private val phone1 = PhoneNumberEntity("+48123456789")
+    private val phone2 = PhoneNumberEntity("+48123456789")
+    private val phone3 = PhoneNumberEntity("+48123123123")
 
     @Test fun `throws an exception on incorrect number`() {
         try {
-            PhoneNumber("123456789")
+            PhoneNumberEntity("123456789")
         } catch (ignored: IncorrectPhoneNumberException) {
             return
         }
@@ -27,7 +27,7 @@ class PhoneNumberTest {
     @Test fun `confirms number is correct`() {
         val phoneNumber = "+48123456789"
 
-        assertEquals(phoneNumber, PhoneNumber(phoneNumber).phoneNumber)
+        assertEquals(phoneNumber, PhoneNumberEntity(phoneNumber).phoneNumber)
     }
 
     @Test fun `differs from null`() {
@@ -39,7 +39,7 @@ class PhoneNumberTest {
     }
 
     @Test fun `equals same`() {
-        val phone = PhoneNumber(phone1.phoneNumber)
+        val phone = PhoneNumberEntity(phone1.phoneNumber)
         assertTrue(phone1 == phone2)
         assertTrue(phone2 == phone1)
 

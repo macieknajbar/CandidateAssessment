@@ -11,16 +11,16 @@ class DisplayCandidatesRepositoryTest {
     private val memoryCandidatesDatabase = MemoryCandidatesDatabase()
 
     @Before fun setUp() {
-        memoryCandidatesDatabase.update("Monica Geller", "+48111222333")
-        memoryCandidatesDatabase.update("Rachel Green", "+48444555666")
+        memoryCandidatesDatabase.update("1", MemoryCandidatesDatabase.DbCandidate("1", "Monica Geller", listOf("+48111222333")))
+        memoryCandidatesDatabase.update("2", MemoryCandidatesDatabase.DbCandidate("2", "Rachel Green", listOf("+48444555666")))
     }
 
     @Test fun `retrieves all candidates`() {
         val repository = MemoryRepositoryOfDisplayCandidates(memoryCandidatesDatabase)
 
         val expected = listOf(
-                CandidateFactory.from("Monica Geller", "+48111222333"),
-                CandidateFactory.from("Rachel Green", "+48444555666"))
+                CandidateFactory.from("1", "Monica Geller", "+48111222333"),
+                CandidateFactory.from("2", "Rachel Green", "+48444555666"))
 
         assertEquals(expected, repository.findByName(""))
     }

@@ -1,6 +1,6 @@
 package com.gmail.najbar.maciek.candidateassessment.usecase
 
-import com.gmail.najbar.maciek.candidateassessment.domain.Candidate
+import com.gmail.najbar.maciek.candidateassessment.domain.CandidateEntity
 
 /**
  * Wrapping interface for list of candidates use cases.
@@ -23,6 +23,12 @@ interface Candidates {
          * @param   name Part of the name.
          */
         fun withName(name: String)
+
+        data class Candidate(val id: String, val name: String, val phoneNumbers: Collection<String>) {
+            internal companion object {
+                fun from(candidate: CandidateEntity) = Candidate(candidate.id, candidate.fullName, candidate.contactNumbers.map { it.phoneNumber })
+            }
+        }
 
         /**
          * Presents results.
@@ -49,7 +55,7 @@ interface Candidates {
              *
              * @return Filtered collection of candidates.
              */
-            fun findByName(name: String) : Collection<Candidate>
+            fun findByName(name: String) : Collection<CandidateEntity>
         }
     }
 }
