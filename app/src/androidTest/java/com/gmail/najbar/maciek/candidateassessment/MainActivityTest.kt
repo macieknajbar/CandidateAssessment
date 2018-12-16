@@ -9,15 +9,15 @@ import org.junit.Test
 
 class MainActivityTest {
 
-    @get:Rule val rule = ActivityTestRule<MainActivity>(MainActivity::class.java)
+    @get:Rule val rule = ActivityTestRule<MainActivity>(MainActivity::class.java, false, false)
 
     @Test fun displaysListOfUsers() {
         val chandlerBing = CandidateFactory.from("chandlerBing", "Chandler Bing", "+48111111111")
-        val rossGeller = CandidateFactory.from("rossGeller", "Chandler Bing", "+48111111111")
-        val joeyTribbiani = CandidateFactory.from("joeyTribbiani", "Chandler Bing", "+48111111111")
-        MemoryDatabase.memoryCandidatesDatabase.update("candidate_0", chandlerBing)
-        MemoryDatabase.memoryCandidatesDatabase.update("candidate_0", rossGeller)
-        MemoryDatabase.memoryCandidatesDatabase.update("candidate_0", joeyTribbiani)
+        val rossGeller = CandidateFactory.from("rossGeller", "Ross Geller", "+48123123123")
+        val joeyTribbiani = CandidateFactory.from("joeyTribbiani", "Joey Tribbiani", "+48123456789")
+        MemoryDatabase.memoryCandidatesDatabase.update(chandlerBing.id, chandlerBing)
+        MemoryDatabase.memoryCandidatesDatabase.update(rossGeller.id, rossGeller)
+        MemoryDatabase.memoryCandidatesDatabase.update(joeyTribbiani.id, joeyTribbiani)
 
         rule.launchActivity(Intent())
 
