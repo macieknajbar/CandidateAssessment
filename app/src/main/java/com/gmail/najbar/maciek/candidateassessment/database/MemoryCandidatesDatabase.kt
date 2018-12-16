@@ -16,4 +16,8 @@ class MemoryCandidatesDatabase {
         candidateTable[id] = candidate.name
         phoneNumberTable[id] = candidate.phoneNumbers
     }
+
+    fun getById(candidateId: String): DbCandidate {
+        TODO()
+    }
 }

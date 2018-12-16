@@ -25,4 +25,12 @@ class MemoryCandidatesDatabaseTest {
 
         assertEquals(listOf(updatedJoey), memoryCandidateDatabase.getAll())
     }
+
+    @Test fun `gets candidate id`() {
+        val candidateId = "Some_id"
+        val joeyTribbiani = MemoryCandidatesDatabase.DbCandidate(candidateId, "Joey Tribbiani", listOf("+48111111111"))
+        memoryCandidateDatabase.update(joeyTribbiani.id, joeyTribbiani)
+
+        assertEquals(joeyTribbiani, memoryCandidateDatabase.getById(candidateId))
+    }
 }

@@ -1,6 +1,7 @@
 package com.gmail.najbar.maciek.candidateassessment.usecase
 
 import com.gmail.najbar.maciek.candidateassessment.database.MemoryCandidatesDatabase
+import com.gmail.najbar.maciek.candidateassessment.repository.DisplayCandidateDetailsMemoryRepository
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -22,7 +23,7 @@ class DisplayDetailsTest {
             }
         }
 
-        DisplayDetails(presenter)
+        DisplayDetails(presenter, DisplayCandidateDetailsMemoryRepository(memoryCandidatesDatabase))
                 .of(candidateId)
     }
 }

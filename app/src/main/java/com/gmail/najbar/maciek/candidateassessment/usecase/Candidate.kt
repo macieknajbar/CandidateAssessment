@@ -87,5 +87,18 @@ interface Candidate {
              */
             fun present(candidate: Candidate)
         }
+
+        /**
+         * Retrieves candidate's details from database.
+         */
+        interface Repository {
+
+            /**
+             * Retrieves information about a candidate.
+             *
+             * @param   candidateId Candidate's ID.
+             */
+            fun about(candidateId: String) : CandidateEntity
+        }
     }
 }
