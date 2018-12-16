@@ -4,7 +4,7 @@ class MemoryCandidatesDatabase {
     private val candidateTable = mutableMapOf<String, String>()
     private val phoneNumberTable = mutableMapOf<String, List<String>>()
 
-    data class DbCandidate(val id: String, val name: String, val phoneNumbers: List<String>)
+    data class DbCandidate(val id: String, val name: String, val phoneNumbers: List<String>, val grade: String? = null)
 
     fun getAll(): Collection<DbCandidate> {
         return candidateTable.flatMap {

@@ -116,9 +116,10 @@ interface Candidate {
         /**
          * Values assessment for a candidate.
          *
+         * @param   candidateId Candidate's id.
          * @param   value Assessment value.
          */
-        fun value(value: String)
+        fun value(candidateId: String, value: String)
 
         /**
          * Presents assessed value.
@@ -131,6 +132,20 @@ interface Candidate {
              * @param   value Assessment value.
              */
             fun present(value: String)
+        }
+
+        /**
+         * Saves assessment in repository.
+         */
+        interface Repository {
+
+            /**
+             * Saves assessment value in database.
+             *
+             * @param   candidateId Candidate's ID.
+             * @param   value Candidate's rate.
+             */
+            fun assess(candidateId: String, value: String)
         }
     }
 }
