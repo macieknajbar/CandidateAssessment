@@ -31,12 +31,12 @@ class AssessCandidateTest {
         memoryCandidatesDatabase.update(candidateId, MemoryCandidatesDatabase.DbCandidate(candidateId, "Monica Bing", listOf("+48123123123")))
 
         val presenter = object : Candidate.Assess.Presenter {
-            override fun present(value: String) {
-                assertEquals(assessmentValue, memoryCandidatesDatabase.getById(candidateId).grade)
-            }
+            override fun present(value: String) {}
         }
 
         AssessCandidate(presenter, CandidateAssessRepository(memoryCandidatesDatabase))
                 .value("candidateId", assessmentValue)
+
+        assertEquals(assessmentValue, memoryCandidatesDatabase.getById(candidateId).grade)
     }
 }
