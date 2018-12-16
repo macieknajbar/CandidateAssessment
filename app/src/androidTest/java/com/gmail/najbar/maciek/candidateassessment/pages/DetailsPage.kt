@@ -1,20 +1,25 @@
 package com.gmail.najbar.maciek.candidateassessment.pages
 
 import android.support.test.espresso.Espresso.onView
-import android.support.test.espresso.action.ViewActions.click
 import android.support.test.espresso.assertion.ViewAssertions.matches
+import android.support.test.espresso.matcher.ViewMatchers.isChecked
 import android.support.test.espresso.matcher.ViewMatchers.isDisplayed
 import android.support.test.espresso.matcher.ViewMatchers.withText
 import com.gmail.najbar.maciek.candidateassessment.domain.CandidateEntity
 
-object MainPage {
+object DetailsPage {
     fun confirmDisplayed(candidateEntity: CandidateEntity) {
         onView(withText(candidateEntity.fullName))
                 .check(matches(isDisplayed()))
-    }
 
-    fun goToDetailsOf(candidateEntity: CandidateEntity) {
-        onView(withText(candidateEntity.fullName))
-                .perform(click())
+        candidateEntity.contactNumbers.forEach {
+            onView(withText(it.phoneNumber))
+                    .check(matches(isDisplayed()))
+        }
+
+        if (candidateEntity.grade.isNotEmpty()) {
+            onView(withText(candidateEntity.grade))
+                    .check(matches(isChecked()))
+        }
     }
 }

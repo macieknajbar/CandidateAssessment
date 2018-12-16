@@ -3,6 +3,7 @@ package com.gmail.najbar.maciek.candidateassessment
 import android.content.Intent
 import android.support.test.rule.ActivityTestRule
 import com.gmail.najbar.maciek.candidateassessment.domain.factory.CandidateFactory
+import com.gmail.najbar.maciek.candidateassessment.pages.DetailsPage
 import com.gmail.najbar.maciek.candidateassessment.pages.MainPage
 import org.junit.Rule
 import org.junit.Test
@@ -24,5 +25,15 @@ class MainActivityTest {
         MainPage.confirmDisplayed(chandlerBing)
         MainPage.confirmDisplayed(rossGeller)
         MainPage.confirmDisplayed(joeyTribbiani)
+    }
+
+    @Test fun goesToCandidateDetails() {
+        val chandlerBing = CandidateFactory.from("chandlerBing", "Chandler Bing", "+48111111111")
+        MemoryDatabase.memoryCandidatesDatabase.update(chandlerBing.id, chandlerBing)
+
+        rule.launchActivity(Intent())
+
+        MainPage.goToDetailsOf(chandlerBing)
+        DetailsPage.confirmDisplayed(chandlerBing)
     }
 }
