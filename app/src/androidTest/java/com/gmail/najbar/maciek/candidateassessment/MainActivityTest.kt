@@ -2,6 +2,8 @@ package com.gmail.najbar.maciek.candidateassessment
 
 import android.content.Intent
 import android.support.test.rule.ActivityTestRule
+import com.gmail.najbar.maciek.candidateassessment.domain.CandidateEntity
+import com.gmail.najbar.maciek.candidateassessment.domain.PhoneNumberEntity
 import com.gmail.najbar.maciek.candidateassessment.domain.factory.CandidateFactory
 import com.gmail.najbar.maciek.candidateassessment.pages.DetailsPage
 import com.gmail.najbar.maciek.candidateassessment.pages.MainPage
@@ -28,7 +30,7 @@ class MainActivityTest {
     }
 
     @Test fun goesToCandidateDetails() {
-        val chandlerBing = CandidateFactory.from("chandlerBing", "Chandler Bing", "+48111111111")
+        val chandlerBing = CandidateEntity("chandlerBing", "Chandler Bing", listOf(PhoneNumberEntity("+48111111111")), "D")
         MemoryDatabase.memoryCandidatesDatabase.update(chandlerBing.id, chandlerBing)
 
         rule.launchActivity(Intent())

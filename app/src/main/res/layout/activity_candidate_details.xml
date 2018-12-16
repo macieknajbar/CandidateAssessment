@@ -33,34 +33,46 @@
 
     <RadioGroup
         android:id="@+id/assessment"
-        app:layout_constraintTop_toBottomOf="@id/phoneNumbers"
-        android:orientation="horizontal"
-        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/phoneNumbers">
+
         <RadioButton
+            android:id="@+id/a"
             android:layout_width="wrap_content"
-            android:text="A"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="A" />
+
         <RadioButton
+            android:id="@+id/b"
             android:layout_width="wrap_content"
-            android:text="B"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="B" />
+
         <RadioButton
+            android:id="@+id/c"
             android:layout_width="wrap_content"
-            android:text="C"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="C" />
+
         <RadioButton
+            android:id="@+id/d"
             android:layout_width="wrap_content"
-            android:text="D"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="D" />
+
         <RadioButton
+            android:id="@+id/e"
             android:layout_width="wrap_content"
-            android:text="E"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="E" />
+
         <RadioButton
+            android:id="@+id/f"
             android:layout_width="wrap_content"
-            android:text="F"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="F" />
     </RadioGroup>
 </android.support.constraint.ConstraintLayout>
