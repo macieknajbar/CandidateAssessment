@@ -107,4 +107,30 @@ interface Candidate {
             fun about(candidateId: String) : CandidateEntity
         }
     }
+
+    /**
+     * Assesses candidates.
+     */
+    interface Assess {
+
+        /**
+         * Values assessment for a candidate.
+         *
+         * @param   value Assessment value.
+         */
+        fun value(value: String)
+
+        /**
+         * Presents assessed value.
+         */
+        interface Presenter {
+
+            /**
+             * Presents assessment.
+             *
+             * @param   value Assessment value.
+             */
+            fun present(value: String)
+        }
+    }
 }
