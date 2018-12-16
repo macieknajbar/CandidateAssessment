@@ -6,11 +6,15 @@ import android.view.LayoutInflater
 import android.widget.LinearLayout
 import android.widget.RadioGroup
 import android.widget.TextView
+import com.gmail.najbar.maciek.candidateassessment.app.AssessCandidatePresenter
 import com.gmail.najbar.maciek.candidateassessment.app.DisplayDetailsPresenter
+import com.gmail.najbar.maciek.candidateassessment.repository.CandidateAssessRepository
 import com.gmail.najbar.maciek.candidateassessment.repository.DisplayCandidateDetailsMemoryRepository
+import com.gmail.najbar.maciek.candidateassessment.usecase.AssessCandidate
 import com.gmail.najbar.maciek.candidateassessment.usecase.DisplayDetails
 
-class CandidateDetailsActivity : AppCompatActivity(), DisplayDetailsPresenter.View {
+class CandidateDetailsActivity : AppCompatActivity(),
+        DisplayDetailsPresenter.View, AssessCandidatePresenter.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,6 +22,20 @@ class CandidateDetailsActivity : AppCompatActivity(), DisplayDetailsPresenter.Vi
 
         DisplayDetails(DisplayDetailsPresenter(this), DisplayCandidateDetailsMemoryRepository(MemoryDatabase.memoryCandidatesDatabase))
                 .of(intent.getStringExtra(EXTRA_CANDIDATE_ID))
+
+        findViewById<RadioGroup>(R.id.assessment).setOnCheckedChangeListener { group, checkedId ->
+            val value = when (checkedId) {
+                R.id.a -> "A"
+                R.id.b -> "B"
+                R.id.c -> "C"
+                R.id.d -> "D"
+                R.id.e -> "E"
+                R.id.f -> "F"
+                else -> ""
+            }
+            AssessCandidate(AssessCandidatePresenter(this), CandidateAssessRepository(MemoryDatabase.memoryCandidatesDatabase))
+                    .value(intent.getStringExtra(EXTRA_CANDIDATE_ID), value)
+        }
     }
 
     override fun displayName(name: String) {
@@ -35,6 +53,14 @@ class CandidateDetailsActivity : AppCompatActivity(), DisplayDetailsPresenter.Vi
     }
 
     override fun displayAssessment(value: String) {
+        gradeCandidate(value)
+    }
+
+    override fun changeGrade(value: String) {
+        gradeCandidate(value)
+    }
+
+    private fun gradeCandidate(value: String) {
         val assessmentGroup = findViewById<RadioGroup>(R.id.assessment)
         val assessmentId = when (value) {
             "A" -> R.id.a
