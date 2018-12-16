@@ -72,9 +72,9 @@ interface Candidate {
          */
         fun of(candidateId: String)
 
-        data class Candidate(val id: String, val fullName: String, val phoneNumbers: Collection<String>) {
+        data class Candidate(val id: String, val fullName: String, val phoneNumbers: Collection<String>, val grade: String) {
             companion object {
-                fun from(candidateEntity: CandidateEntity) = Candidate(candidateEntity.id, candidateEntity.fullName, candidateEntity.contactNumbers.map { it.phoneNumber })
+                fun from(candidateEntity: CandidateEntity) = Candidate(candidateEntity.id, candidateEntity.fullName, candidateEntity.contactNumbers.map { it.phoneNumber }, candidateEntity.grade)
             }
         }
 
@@ -145,6 +145,7 @@ interface Candidate {
              * @param   candidateId Candidate's ID.
              * @param   value Candidate's rate.
              */
+            @Throws(NoSuchCandidateException::class)
             fun assess(candidateId: String, value: String)
         }
     }

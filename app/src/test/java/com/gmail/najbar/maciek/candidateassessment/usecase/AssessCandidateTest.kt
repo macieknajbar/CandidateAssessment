@@ -1,7 +1,8 @@
 package com.gmail.najbar.maciek.candidateassessment.usecase
 
-import com.gmail.najbar.maciek.candidateassessment.database.MemoryCandidatesDatabase
+import com.gmail.najbar.maciek.candidateassessment.domain.CandidateFactory
 import com.gmail.najbar.maciek.candidateassessment.repository.CandidateAssessRepository
+import com.gmail.najbar.maciek.candidateassessment.repository.mapper.MemoryCandidatesDatabase
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -28,7 +29,7 @@ class AssessCandidateTest {
     @Test fun `candidate's assessment is saved in repo`() {
         val candidateId = "candidateId"
         val assessmentValue = "B"
-        memoryCandidatesDatabase.update(candidateId, MemoryCandidatesDatabase.DbCandidate(candidateId, "Monica Bing", listOf("+48123123123")))
+        memoryCandidatesDatabase.update(candidateId, CandidateFactory.from(candidateId, "Monica Bing", "+48123123123"))
 
         val presenter = object : Candidate.Assess.Presenter {
             override fun present(value: String) {}
