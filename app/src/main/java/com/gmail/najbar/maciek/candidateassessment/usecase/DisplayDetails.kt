@@ -1,8 +1,9 @@
 package com.gmail.najbar.maciek.candidateassessment.usecase
 
-class DisplayDetails : CandidateDetails.DisplayDetails {
+class DisplayDetails(
+        private val presenter: Candidate.DisplayDetails.Presenter) : Candidate.DisplayDetails {
 
     override fun of(candidateId: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        presenter.present(Candidate.DisplayDetails.Candidate("", "", listOf()))
     }
 }

@@ -5,7 +5,7 @@ import com.gmail.najbar.maciek.candidateassessment.domain.CandidateEntity
 /**
  * Wrapping interface for list of candidates use cases.
  */
-interface Candidates {
+interface Candidate {
 
     /**
      * Displays list of candidates.
@@ -56,6 +56,36 @@ interface Candidates {
              * @return Filtered collection of candidates.
              */
             fun findByName(name: String) : Collection<CandidateEntity>
+        }
+    }
+
+    /**
+     * Displays candidates details.
+     */
+    interface DisplayDetails {
+
+        /**
+         * Displays details of candidate with specified id.
+         *
+         * @param   candidateId Candidate ID.
+         */
+        fun of(candidateId: String)
+
+        data class Candidate(val id: String, val fullName: String, val phoneNumbers: Collection<String>) {
+            companion object {
+                fun from(candidateEntity: CandidateEntity) = Candidate(candidateEntity.id, candidateEntity.fullName, candidateEntity.contactNumbers.map { it.phoneNumber })
+            }
+        }
+
+        /**
+         * Presents candidate's details.
+         */
+        interface Presenter {
+
+            /**
+             * Presents details of candidates.
+             */
+            fun present(candidate: Candidate)
         }
     }
 }
