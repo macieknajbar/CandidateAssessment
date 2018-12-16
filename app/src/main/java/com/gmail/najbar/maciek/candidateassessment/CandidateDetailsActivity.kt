@@ -23,7 +23,7 @@ class CandidateDetailsActivity : AppCompatActivity(),
         DisplayDetails(DisplayDetailsPresenter(this), DisplayCandidateDetailsMemoryRepository(MemoryDatabase.memoryCandidatesDatabase))
                 .of(intent.getStringExtra(EXTRA_CANDIDATE_ID))
 
-        findViewById<RadioGroup>(R.id.assessment).setOnCheckedChangeListener { group, checkedId ->
+        findViewById<RadioGroup>(R.id.assessment).setOnCheckedChangeListener { _, checkedId ->
             val value = when (checkedId) {
                 R.id.a -> "A"
                 R.id.b -> "B"

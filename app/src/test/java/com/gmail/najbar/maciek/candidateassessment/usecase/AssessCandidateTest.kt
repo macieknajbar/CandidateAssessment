@@ -38,7 +38,7 @@ class AssessCandidateTest {
         AssessCandidate(presenter, CandidateAssessRepository(memoryCandidatesDatabase))
                 .value(candidateId, assessmentValue)
 
-        assertEquals(assessmentValue, memoryCandidatesDatabase.getById(candidateId).grade)
+        assertEquals(assessmentValue, memoryCandidatesDatabase.getById(candidateId).grade?.name)
     }
 
     @Test fun `presents no-value if repository saving failed`() {

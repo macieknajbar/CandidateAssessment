@@ -1,5 +1,6 @@
 package com.gmail.najbar.maciek.candidateassessment.usecase
 
+import com.gmail.najbar.maciek.candidateassessment.domain.Assessment
 import com.gmail.najbar.maciek.candidateassessment.domain.CandidateEntity
 import com.gmail.najbar.maciek.candidateassessment.repository.exception.NoSuchCandidateException
 
@@ -100,7 +101,7 @@ interface Candidate {
 
         data class Candidate(val id: String, val fullName: String, val phoneNumbers: Collection<String>, val grade: String) {
             companion object {
-                fun from(candidateEntity: CandidateEntity) = Candidate(candidateEntity.id, candidateEntity.fullName, candidateEntity.contactNumbers.map { it.phoneNumber }, candidateEntity.grade)
+                fun from(candidateEntity: CandidateEntity) = Candidate(candidateEntity.id, candidateEntity.fullName, candidateEntity.contactNumbers.map { it.phoneNumber }, candidateEntity.grade?.name ?: "")
             }
         }
 

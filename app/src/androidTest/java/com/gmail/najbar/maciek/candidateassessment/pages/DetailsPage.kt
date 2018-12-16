@@ -17,8 +17,8 @@ object DetailsPage {
                     .check(matches(isDisplayed()))
         }
 
-        if (candidateEntity.grade.isNotEmpty()) {
-            onView(withText(candidateEntity.grade))
+        if (candidateEntity.grade?.name != null) {
+            onView(withText(candidateEntity.grade!!.name))
                     .check(matches(isChecked()))
         }
     }
