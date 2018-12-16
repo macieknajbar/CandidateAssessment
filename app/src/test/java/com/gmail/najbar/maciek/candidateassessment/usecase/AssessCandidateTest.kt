@@ -35,8 +35,23 @@ class AssessCandidateTest {
         }
 
         AssessCandidate(presenter, CandidateAssessRepository(memoryCandidatesDatabase))
-                .value("candidateId", assessmentValue)
+                .value(candidateId, assessmentValue)
 
         assertEquals(assessmentValue, memoryCandidatesDatabase.getById(candidateId).grade)
+    }
+
+    @Test fun `presents no-value if repository saving failed`() {
+        val assessmentValue = "B"
+
+        val presenter = object : Candidate.Assess.Presenter {
+            override fun present(value: String) {
+                if (assessmentValue != value) {
+                    assertEquals("", value)
+                }
+            }
+        }
+
+        AssessCandidate(presenter, CandidateAssessRepository(memoryCandidatesDatabase))
+                .value("candidateId", assessmentValue)
     }
 }
