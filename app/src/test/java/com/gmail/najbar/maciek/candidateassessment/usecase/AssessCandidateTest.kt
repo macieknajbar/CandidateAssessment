@@ -1,6 +1,6 @@
 package com.gmail.najbar.maciek.candidateassessment.usecase
 
-import com.gmail.najbar.maciek.candidateassessment.domain.CandidateFactory
+import com.gmail.najbar.maciek.candidateassessment.domain.factory.CandidateFactory
 import com.gmail.najbar.maciek.candidateassessment.repository.CandidateAssessRepository
 import com.gmail.najbar.maciek.candidateassessment.repository.mapper.MemoryCandidatesDatabase
 import org.junit.Assert.assertEquals

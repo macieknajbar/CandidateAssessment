@@ -1,9 +1,9 @@
 package com.gmail.najbar.maciek.candidateassessment.repository
 
 import com.gmail.najbar.maciek.candidateassessment.domain.CandidateEntity
-import com.gmail.najbar.maciek.candidateassessment.repository.mapper.MemoryCandidatesDatabase
-import com.gmail.najbar.maciek.candidateassessment.domain.CandidateFactory
 import com.gmail.najbar.maciek.candidateassessment.domain.PhoneNumberEntity
+import com.gmail.najbar.maciek.candidateassessment.domain.factory.CandidateFactory
+import com.gmail.najbar.maciek.candidateassessment.repository.mapper.MemoryCandidatesDatabase
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
