@@ -4,6 +4,6 @@ class AssessCandidate(
         private val presenter: Candidate.Assess.Presenter) : Candidate.Assess {
 
     override fun value(value: String) {
-        presenter.present("")
+        presenter.present(value)
     }
 }
