@@ -1,6 +1,7 @@
 package com.gmail.najbar.maciek.candidateassessment.usecase
 
 import com.gmail.najbar.maciek.candidateassessment.domain.CandidateEntity
+import com.gmail.najbar.maciek.candidateassessment.repository.exception.NoSuchCandidateException
 
 /**
  * Wrapping interface for list of candidates use cases.
@@ -97,7 +98,12 @@ interface Candidate {
              * Retrieves information about a candidate.
              *
              * @param   candidateId Candidate's ID.
+             *
+             * @throws  NoSuchCandidateException if there's no candidate with provided id.
+             *
+             * @return Candidate's details information.
              */
+            @Throws(NoSuchCandidateException::class)
             fun about(candidateId: String) : CandidateEntity
         }
     }

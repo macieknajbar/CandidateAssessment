@@ -28,9 +28,9 @@ class MemoryCandidatesDatabaseTest {
 
     @Test fun `gets candidate id`() {
         val candidateId = "Some_id"
-        val joeyTribbiani = MemoryCandidatesDatabase.DbCandidate(candidateId, "Joey Tribbiani", listOf("+48111111111"))
-        memoryCandidateDatabase.update(joeyTribbiani.id, joeyTribbiani)
+        val phoebeBuffet = MemoryCandidatesDatabase.DbCandidate(candidateId, "Phoebe Buffet", listOf("+48987654321"))
+        memoryCandidateDatabase.update(phoebeBuffet.id, phoebeBuffet)
 
-        assertEquals(joeyTribbiani, memoryCandidateDatabase.getById(candidateId))
+        assertEquals(phoebeBuffet, memoryCandidateDatabase.getById(candidateId))
     }
 }

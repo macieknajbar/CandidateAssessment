@@ -18,7 +18,7 @@ class DisplayDetailsTest {
         val presenter = object : Candidate.DisplayDetails.Presenter {
             override fun present(candidate: Candidate.DisplayDetails.Candidate) {
                 assertEquals(candidateId, candidate.id)
-                assertEquals(name, candidate.id)
+                assertEquals(name, candidate.fullName)
                 assertEquals(phones, candidate.phoneNumbers)
             }
         }
