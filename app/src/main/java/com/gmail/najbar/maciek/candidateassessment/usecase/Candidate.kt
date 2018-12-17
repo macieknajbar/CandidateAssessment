@@ -61,6 +61,32 @@ interface Candidate {
     }
 
     /**
+     * Opens candidate's details screen.
+     */
+    interface OpenDetailsScreen {
+
+        /**
+         * Goes to details screen.
+         *
+         * @param   candidateId Candidate's ID.
+         */
+        fun go(candidateId: String)
+
+        /**
+         * Presents candidate's details screen.
+         */
+        interface Presenter {
+
+            /**
+             * Presents screen for specified candidate.
+             *
+             * @param   candidateId Candidate's ID.
+             */
+            fun present(candidateId: String)
+        }
+    }
+
+    /**
      * Displays candidates details.
      */
     interface DisplayDetails {
