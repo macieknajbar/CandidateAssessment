@@ -8,11 +8,14 @@ import android.widget.AdapterView
 import android.widget.ListView
 import com.gmail.najbar.maciek.candidateassessment.app.CandidatesAdapter
 import com.gmail.najbar.maciek.candidateassessment.app.DisplayCandidatesPresenter
+import com.gmail.najbar.maciek.candidateassessment.app.OpenDetailsScreenPresenter
 import com.gmail.najbar.maciek.candidateassessment.repository.MemoryRepositoryOfDisplayCandidates
 import com.gmail.najbar.maciek.candidateassessment.usecase.DisplayCandidates
+import com.gmail.najbar.maciek.candidateassessment.usecase.OpenDetailsScreen
 
 class MainActivity : AppCompatActivity(),
-        DisplayCandidatesPresenter.View {
+        DisplayCandidatesPresenter.View,
+        OpenDetailsScreenPresenter.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,10 +36,14 @@ class MainActivity : AppCompatActivity(),
         val candidates = findViewById<ListView>(R.id.candidates)
         candidates.adapter = CandidatesAdapter(names)
         candidates.onItemClickListener = AdapterView.OnItemClickListener { _, view, _, _ ->
-            // TODO: New use case.
-            startActivity(Intent(this, CandidateDetailsActivity::class.java).putExtra(
-                    CandidateDetailsActivity.EXTRA_CANDIDATE_ID,
-                    view.tag as String))
+            OpenDetailsScreen(OpenDetailsScreenPresenter(this))
+                    .go(view.tag as String)
         }
+    }
+
+    override fun showDetailsFor(candidateId: String) {
+        startActivity(Intent(this, CandidateDetailsActivity::class.java).putExtra(
+                CandidateDetailsActivity.EXTRA_CANDIDATE_ID,
+                candidateId))
     }
 }
