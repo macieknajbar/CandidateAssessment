@@ -3,7 +3,6 @@ package com.gmail.najbar.maciek.candidateassessment
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.view.View
 import android.widget.AdapterView
 import android.widget.ListView
 import com.gmail.najbar.maciek.candidateassessment.app.CandidatesAdapter
@@ -24,12 +23,6 @@ class MainActivity : AppCompatActivity(),
 
         DisplayCandidates(DisplayCandidatesPresenter(this), MemoryRepositoryOfDisplayCandidates(MemoryDatabase.memoryCandidatesDatabase))
                 .all()
-
-        findViewById<View>(R.id.newCandidate)
-                .setOnClickListener {
-                    startActivity(Intent(this, CandidateDetailsActivity::class.java)
-                            .putExtra(CandidateDetailsActivity.EXTRA_CANDIDATE_ID, ""))
-                }
     }
 
     override fun displayCandidates(names: Map<String, String>) {

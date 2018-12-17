@@ -15,13 +15,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
-    <Button
-        android:id="@+id/newCandidate"
-        android:layout_width="wrap_content"
-        android:text="@string/new_candidate"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="20dp"
-        android:layout_height="wrap_content" />
-
 </android.support.constraint.ConstraintLayout>
