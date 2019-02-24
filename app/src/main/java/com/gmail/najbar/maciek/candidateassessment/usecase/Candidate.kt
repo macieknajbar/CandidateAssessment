@@ -1,6 +1,5 @@
 package com.gmail.najbar.maciek.candidateassessment.usecase
 
-import com.gmail.najbar.maciek.candidateassessment.domain.Assessment
 import com.gmail.najbar.maciek.candidateassessment.domain.CandidateEntity
 import com.gmail.najbar.maciek.candidateassessment.repository.exception.NoSuchCandidateException
 
